@@ -1,20 +1,28 @@
-			<!-- Navigation Bar -->
-			<nav class="bg-green-600 shadow mb-8">
-				<div class="max-w-4xl mx-auto px-4">
-					<div class="flex justify-between h-16 items-center">
-						<div class="flex space-x-4">
-							<a href="index.html" class="text-white font-bold text-lg hover:text-green-200 transition">Generator</a>
-							<a href="debrief.html" class="text-white font-bold text-lg hover:text-green-200 transition">Debrief</a>
-						</div>
-					</div>
-				</div>
-			</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rick and Morty Generator</title>
 	<!-- Tailwind CSS CDN -->
 	<script src="https://cdn.tailwindcss.com"></script>
 	<!-- Alpine.js CDN -->
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="RickMortyApi.js"></script>
-	<div x-data="rickMortyCharacter" class="flex flex-col items-center min-h-screen bg-gradient-to-br from-green-100 to-blue-200 py-10">
+</head>
+<body class="bg-gradient-to-br from-green-100 to-blue-200 min-h-screen">
+	<!-- Navigation Bar -->
+	<nav class="bg-green-600 shadow mb-8">
+	  <div class="max-w-4xl mx-auto px-4">
+		<div class="flex justify-between h-16 items-center">
+		  <div class="flex space-x-4">
+			<a href="index.html" class="text-white font-bold text-lg hover:text-green-200 transition">Generator</a>
+			<a href="debrief.html" class="text-white font-bold text-lg hover:text-green-200 transition">Debrief</a>
+		  </div>
+		</div>
+	  </div>
+	</nav>
+	<div x-data="rickMortyCharacter" x-init="init()" class="flex flex-col items-center py-10">
 		<button @click="fetchRandomCharacter" class="mb-6 px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg shadow transition duration-200">Get Random Character</button>
 		<template x-if="loading">
 			<p class="text-lg text-blue-700 font-semibold animate-pulse">Loading...</p>
@@ -33,3 +41,5 @@
 			</div>
 		</template>
 	</div>
+</body>
+</html>
