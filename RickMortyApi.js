@@ -1,3 +1,30 @@
+// Simple function to fetch and display one Rick and Morty character's info
+async function displaySingleCharacter() {
+	try {
+		const response = await fetch('https://rickandmortyapi.com/api/character/1'); // Character 1: Rick Sanchez
+		if (!response.ok) throw new Error('Network response was not ok');
+		const character = await response.json();
+
+		const container = document.createElement('div');
+		container.className = 'character-info';
+
+		container.innerHTML = `
+			<h2>Name: ${character.name}</h2>
+			<p>Species: ${character.species}</p>
+			<p>Gender: ${character.gender}</p>
+			<p>Origin: ${character.origin.name}</p>
+			<img src="${character.image}" alt="${character.name}" style="max-width:200px;">
+			<p>Image URL: ${character.image}</p>
+		`;
+
+		document.body.appendChild(container);
+	} catch (error) {
+		console.error('Error fetching character:', error);
+	}
+}
+
+// Call the function when the script loads
+window.addEventListener('DOMContentLoaded', displaySingleCharacter);
 // Alpine.js component for Rick and Morty character
 document.addEventListener('alpine:init', () => {
 	Alpine.data('rickMortyCharacter', () => ({
